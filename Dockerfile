@@ -2,9 +2,9 @@
 
 #
 # ---- Base Node ----
-FROM alpine:3.5 AS base
+FROM  mhart/alpine-node:8 AS base
 # install node
-RUN apk add --no-cache nodejs-current tini
+RUN apk add --no-cache  tini
 #RUN apk add --no-cache  tini
 # set working directory
 WORKDIR /root/app
@@ -26,11 +26,12 @@ RUN npm install
 
 #
 # ---- Release ----
-FROM base AS release
+FROM mhart/alpine-node:base-8
+WORKDIR /root/app
 # copy production node_modules
 COPY --from=dependencies /root/app/prod_node_modules ./node_modules
 # copy app sources
 COPY . .
 # expose port and define CMD
-EXPOSE 8080
-CMD npm run start
+EXPOSE 3000
+CMD ./node_modules/micro/bin/micro.js
