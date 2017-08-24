@@ -1,13 +1,16 @@
 {
-  "name": "docker_web_app",
-  "version": "1.0.0",
-  "description": "Node.js on Docker",
-  "author": "First Last <first.last@example.com>",
+  "name": "escdemo",
+  "version": "0.0.1",
   "main": "index.js",
   "scripts": {
-    "start": "micro"
+    "start": "micro",
+    "dev": "micro-dev"
   },
   "dependencies": {
-    "micro": "^8.0.3"
+    "micro": "^8.0.3",
+    "node-fetch": "^1.7.2"
+  },
+  "devDependencies": {
+    "micro-dev": "^1.2.1"
   }
 }
